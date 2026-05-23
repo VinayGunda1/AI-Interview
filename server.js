@@ -4,6 +4,21 @@ const path = require("node:path");
 
 loadEnvFile();
 
+const express = require("express");
+const path = require("path");
+
+const app = express();
+
+app.use(express.static(__dirname));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+module.exports = app;
+
+
+
 const PORT = Number(process.env.PORT || 5500);
 const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const ROOT = __dirname;
