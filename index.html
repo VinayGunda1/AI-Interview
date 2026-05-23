@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Mock Interview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="setup-panel" id="setupPanel">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div>
+          <p class="eyebrow">AI Mock Interview</p>
+          <h1>Practice subject-wise interviews with instant AI feedback.</h1>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbital orbital-one"></div>
+        <div class="orbital orbital-two"></div>
+        <div class="signal-grid">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <form class="setup-form" id="setupForm">
+        <fieldset>
+          <legend>Subject</legend>
+          <div class="choice-grid" id="subjectChoices"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Interview Type</legend>
+          <div class="segmented-control" id="typeChoices"></div>
+        </fieldset>
+
+        <div class="form-row">
+          <fieldset>
+            <legend>Difficulty</legend>
+            <div class="segmented-control" id="difficultyChoices"></div>
+          </fieldset>
+
+          <label class="select-field">
+            <span>Questions</span>
+            <select id="questionCount">
+              <option value="5">5 questions</option>
+              <option value="7">7 questions</option>
+              <option value="10">10 questions</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="primary-action" type="submit">
+          Start Interview
+          <span aria-hidden="true">-></span>
+        </button>
+      </form>
+    </section>
+
+    <section class="interview-panel hidden" id="interviewPanel">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="sessionMeta">Session</p>
+          <h2 id="interviewTitle">Interview</h2>
+        </div>
+        <div class="session-tools">
+          <div class="timer" id="timer">00:00</div>
+          <button class="ghost-button" id="exitInterview" type="button">Exit</button>
+        </div>
+      </header>
+
+      <div class="progress-track" aria-label="Interview progress">
+        <div id="progressFill"></div>
+      </div>
+
+      <div class="interview-layout">
+        <aside class="ai-card">
+          <div class="ai-avatar" aria-hidden="true">
+            <div></div>
+          </div>
+          <p class="ai-label">AI Interviewer</p>
+          <p id="aiHint">Answer clearly, include examples where useful, and submit when ready.</p>
+        </aside>
+
+        <article class="question-card">
+          <div class="question-count" id="questionCounter">Question 1 of 5</div>
+          <h3 id="questionText"></h3>
+          <p class="question-note" id="questionNote"></p>
+
+          <label class="answer-box">
+            <span>Your answer</span>
+            <textarea id="answerInput" rows="9" placeholder="Type your answer here..."></textarea>
+          </label>
+
+          <div class="question-actions">
+            <button class="ghost-button" id="skipQuestion" type="button">Skip</button>
+            <button class="primary-action compact" id="submitAnswer" type="button">Submit Answer</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="results-panel hidden" id="resultsPanel">
+      <header class="results-header">
+        <div>
+          <p class="eyebrow">Interview Complete</p>
+          <h2>Your AI feedback is ready.</h2>
+        </div>
+        <button class="primary-action compact" id="restartInterview" type="button">Practice Again</button>
+      </header>
+
+      <div class="score-strip">
+        <div class="score-ring" id="scoreRing">
+          <span id="overallScore">0</span>
+          <small>/100</small>
+        </div>
+        <div>
+          <h3 id="scoreSummary">Good start</h3>
+          <p id="scoreDetails"></p>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <section>
+          <h3>Strengths</h3>
+          <ul id="strengthList"></ul>
+        </section>
+        <section>
+          <h3>Suggested Improvements</h3>
+          <ul id="improvementList"></ul>
+        </section>
+      </div>
+
+      <section class="feedback-list">
+        <h3>Question-wise Feedback</h3>
+        <div id="feedbackItems"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
